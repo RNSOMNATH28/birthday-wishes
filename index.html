@@ -1,32 +1,544 @@
-<!-- Fireworks -->
-<div class="firework f1">
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="firework f2">
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
-</div>
+<head>
 
-<div class="firework f3">
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
-</div>
+    <meta charset="UTF-8">
 
-<!-- Floating Balloons -->
-<div class="balloon balloon1">
-    <div class="string"></div>
-</div>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<div class="balloon balloon2">
-    <div class="string"></div>
-</div>
+    <title>Magic Greeting Card</title>
 
-<div class="balloon balloon3">
-    <div class="string"></div>
-</div>
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
 
-<div class="balloon balloon4">
-    <div class="string"></div>
-</div>
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         BACKGROUND CONFETTI
+    ================================== -->
+
+    <div class="confetti c1"></div>
+    <div class="confetti c2"></div>
+    <div class="confetti c3"></div>
+    <div class="confetti c4"></div>
+    <div class="confetti c5"></div>
+    <div class="confetti c6"></div>
+    <div class="confetti c7"></div>
+    <div class="confetti c8"></div>
+
+
+    <!-- =================================
+         SPARKLES
+    ================================== -->
+
+    <div class="star s1">✦</div>
+
+    <div class="star s2">✧</div>
+
+    <div class="star s3">✦</div>
+
+    <div class="star s4">✧</div>
+
+
+    <!-- =================================
+         FIREWORKS / CRACKERS
+    ================================== -->
+
+    <div class="firework f1">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="firework f2">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="firework f3">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="firework f4">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =================================
+         FLOATING BALLOONS
+    ================================== -->
+
+    <div class="balloon balloon1">
+
+        <div class="string"></div>
+
+    </div>
+
+
+    <div class="balloon balloon2">
+
+        <div class="string"></div>
+
+    </div>
+
+
+    <div class="balloon balloon3">
+
+        <div class="string"></div>
+
+    </div>
+
+
+    <div class="balloon balloon4">
+
+        <div class="string"></div>
+
+    </div>
+
+
+    <!-- =================================
+         FORM SECTION
+    ================================== -->
+
+    <section
+        class="form-container"
+        id="formSection">
+
+
+        <div class="form-card">
+
+
+            <!-- Icon -->
+
+            <div class="form-icon">
+
+                ✨
+
+            </div>
+
+
+            <!-- Heading -->
+
+            <h1>
+
+                Create Your Magic
+
+            </h1>
+
+
+            <p class="subtitle">
+
+                Let's create a beautiful
+                greeting just for you.
+
+            </p>
+
+
+            <!-- =================================
+                 FORM
+            ================================== -->
+
+            <form id="greetingForm">
+
+
+                <!-- NAME -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        👤 What's your name?
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+                <!-- AGE -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        🎂 How old are you?
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        id="age"
+                        placeholder="Enter your age"
+                        min="1"
+                        max="120"
+                        required>
+
+                </div>
+
+
+                <!-- OCCASION -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        🎉 What are we celebrating?
+
+                    </label>
+
+
+                    <select
+                        id="occasion"
+                        required>
+
+
+                        <option value="">
+
+                            Choose an occasion
+
+                        </option>
+
+
+                        <option value="Birthday">
+
+                            🎂 Birthday
+
+                        </option>
+
+
+                        <option value="Congratulations">
+
+                            🏆 Congratulations
+
+                        </option>
+
+
+                        <option value="Achievement">
+
+                            ⭐ Achievement
+
+                        </option>
+
+
+                        <option value="Graduation">
+
+                            🎓 Graduation
+
+                        </option>
+
+
+                        <option value="Success">
+
+                            🚀 Success
+
+                        </option>
+
+
+                        <option value="Special Day">
+
+                            💖 Special Day
+
+                        </option>
+
+
+                    </select>
+
+                </div>
+
+
+                <!-- SPECIAL MESSAGE -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        💭 Write something special
+
+                    </label>
+
+
+                    <textarea
+                        id="message"
+                        placeholder="Write a short message..."
+                        maxlength="150"></textarea>
+
+                </div>
+
+
+                <!-- =================================
+                     THEME
+                ================================== -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        🎨 Choose your vibe
+
+                    </label>
+
+
+                    <div class="moods">
+
+
+                        <button
+                            type="button"
+                            class="mood active"
+                            data-theme="dream">
+
+                            🌌 Dreamy
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="mood"
+                            data-theme="sunset">
+
+                            🌅 Sunset
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="mood"
+                            data-theme="ocean">
+
+                            🌊 Ocean
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="mood"
+                            data-theme="candy">
+
+                            🍭 Candy
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- CREATE BUTTON -->
+
+                <button
+                    type="submit"
+                    class="create-btn">
+
+                    🎉 Create My Card ✨
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================
+         GREETING CARD
+    ================================== -->
+
+    <section
+        class="card-container"
+        id="cardSection">
+
+
+        <!-- Balloons around card -->
+
+        <div class="card-balloon red"></div>
+
+        <div class="card-balloon yellow"></div>
+
+        <div class="card-balloon blue"></div>
+
+        <div class="card-balloon purple"></div>
+
+
+        <!-- Main Card -->
+
+        <div class="card">
+
+
+            <!-- Celebration Icon -->
+
+            <div class="icon">
+
+                🎉
+
+            </div>
+
+
+            <!-- Small Heading -->
+
+            <p class="small-title">
+
+                A SPECIAL MESSAGE FOR
+
+            </p>
+
+
+            <!-- User Name -->
+
+            <h1 id="cardName">
+
+                Your Name
+
+            </h1>
+
+
+            <!-- Age -->
+
+            <div class="age">
+
+
+                <span id="cardAge">
+
+                    20
+
+                </span>
+
+
+                <small>
+
+                    YEARS
+
+                </small>
+
+
+            </div>
+
+
+            <!-- Occasion -->
+
+            <h2 id="cardOccasion">
+
+                Congratulations!
+
+            </h2>
+
+
+            <!-- Decorative Line -->
+
+            <div class="line"></div>
+
+
+            <!-- User Message -->
+
+            <p
+                class="message"
+                id="cardMessage">
+
+                May this beautiful moment become
+                the beginning of something extraordinary.
+                Keep believing, keep growing,
+                and keep shining.
+
+            </p>
+
+
+            <!-- Highlight -->
+
+            <p class="highlight">
+
+                ✨ Keep shining. Keep dreaming. ✨
+
+            </p>
+
+
+            <!-- Signature -->
+
+            <p class="signature">
+
+                WITH LOVE • ALWAYS
+
+            </p>
+
+
+            <!-- Back Button -->
+
+            <button
+                class="back-btn"
+                id="backButton">
+
+                ← Create Another Card
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
