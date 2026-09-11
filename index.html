@@ -2,543 +2,1356 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise 🎂</title>
 
-    <title>Magic Greeting Card</title>
+    <style>
 
-    <!-- CSS File -->
-    <link rel="stylesheet" href="style.css">
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at 50% 65%, #241421 0%, #0c0710 45%, #020203 80%);
+    color: white;
+}
+
+.ambient-glow {
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: rgba(255, 108, 70, 0.06);
+    filter: blur(120px);
+    left: 50%;
+    bottom: -400px;
+    transform: translateX(-50%);
+}
+
+.scene {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.top-text {
+    position: absolute;
+    top: 7%;
+    color: #9e939d;
+    letter-spacing: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.stage {
+    position: relative;
+    width: 760px;
+    height: 480px;
+}
+
+/* MONKEY */
+
+.monkey {
+    position: absolute;
+    left: 75px;
+    bottom: 105px;
+    width: 190px;
+    height: 270px;
+    transform-origin: bottom center;
+    animation: monkeyIdle 2.5s ease-in-out infinite;
+}
+
+@keyframes monkeyIdle {
+    0%, 100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(1deg);
+    }
+}
+
+/* HEAD */
+
+.monkey-head {
+    position: absolute;
+    left: 27px;
+    top: 32px;
+    width: 140px;
+    height: 145px;
+    border-radius: 48% 48% 43% 43%;
+    background:
+        radial-gradient(circle at 38% 25%, #7a4a32, #3c2118 75%);
+    box-shadow:
+        inset -12px -12px 18px rgba(0,0,0,.3),
+        0 15px 30px rgba(0,0,0,.5);
+    z-index: 4;
+}
+
+.face-area {
+    position: absolute;
+    width: 100px;
+    height: 95px;
+    left: 20px;
+    top: 38px;
+    border-radius: 45% 45% 50% 50%;
+    background:
+        radial-gradient(circle at 50% 30%, #d7a075, #b37750);
+}
+
+/* EARS */
+
+.ear {
+    position: absolute;
+    width: 50px;
+    height: 58px;
+    top: 65px;
+    border-radius: 50%;
+    background: #67402d;
+    z-index: 2;
+    animation: earWiggle 2s ease-in-out infinite;
+}
+
+.ear::after {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border-radius: 50%;
+    background: #b77a58;
+}
+
+.ear-left {
+    left: 5px;
+}
+
+.ear-right {
+    right: 3px;
+}
+
+@keyframes earWiggle {
+    0%,100% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(6deg);
+    }
+}
+
+/* HAIR */
+
+.hair {
+    position: absolute;
+    width: 90px;
+    height: 38px;
+    left: 25px;
+    top: -8px;
+    border-radius: 50%;
+    background: #24130e;
+    transform: rotate(-4deg);
+}
+
+/* CAP */
+
+.cap {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 65px;
+
+    width: 68px;
+    height: 65px;
+
+    background:
+        linear-gradient(140deg, #ff4d8d, #9d4edd);
+
+    clip-path:
+        polygon(
+            50% 0%,
+            100% 100%,
+            0 100%
+        );
+
+    transform: rotate(8deg);
+    transform-origin: bottom;
+    animation: capBounce 1.8s ease-in-out infinite;
+}
+
+.cap::after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 10px;
+    left: -1px;
+    bottom: 0;
+    background: #f4c2df;
+    border-radius: 20px;
+}
+
+.cap-ball {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ffe4f2;
+    top: -6px;
+    left: 27px;
+}
+
+@keyframes capBounce {
+    0%,100% {
+        transform: rotate(8deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(3deg) translateY(-5px);
+    }
+}
+
+/* EYES */
+
+.eye {
+    position: absolute;
+    top: 31px;
+    width: 13px;
+    height: 17px;
+    background: #17100d;
+    border-radius: 50%;
+    animation: blink 4.5s infinite;
+}
+
+.eye-left {
+    left: 24px;
+}
+
+.eye-right {
+    right: 24px;
+}
+
+@keyframes blink {
+    0%,92%,100% {
+        transform: scaleY(1);
+    }
+
+    95% {
+        transform: scaleY(.08);
+    }
+}
+
+/* CHEEKS */
+
+.cheek {
+    position: absolute;
+    width: 18px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 120, 130, .28);
+    top: 55px;
+}
+
+.cheek-left {
+    left: 10px;
+}
+
+.cheek-right {
+    right: 10px;
+}
+
+/* NOSE */
+
+.nose {
+    position: absolute;
+    left: 43px;
+    top: 50px;
+    width: 15px;
+    height: 12px;
+    border-radius: 50%;
+    background: #6d422f;
+}
+
+/* MOUTH */
+
+.mouth {
+    position: absolute;
+    width: 35px;
+    height: 18px;
+    left: 33px;
+    top: 68px;
+    border-radius: 0 0 50px 50px;
+    background: #4b201b;
+    transition: .3s;
+}
+
+/* BODY */
+
+.monkey-body {
+    position: absolute;
+    left: 43px;
+    top: 160px;
+    width: 110px;
+    height: 100px;
+    border-radius: 45px 45px 22px 22px;
+    background:
+        linear-gradient(145deg, #48245d, #1c1226);
+    box-shadow:
+        inset -15px -12px 25px rgba(0,0,0,.4);
+}
+
+.shirt-text {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 11px;
+    line-height: 1.3;
+    letter-spacing: 2px;
+    color: #dfb7ee;
+    font-weight: bold;
+}
+
+/* ARMS */
+
+.arm {
+    position: absolute;
+    width: 27px;
+    height: 95px;
+    top: 165px;
+    border-radius: 30px;
+    background: #6a402d;
+}
+
+.arm-left {
+    left: 27px;
+    transform: rotate(12deg);
+}
+
+.arm-right {
+    right: 20px;
+    transform: rotate(-15deg);
+}
+
+/* TAIL */
+
+.tail {
+    position: absolute;
+    width: 75px;
+    height: 90px;
+    left: -15px;
+    bottom: 5px;
+    border: 13px solid #5d3829;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    transform: rotate(-50deg);
+    animation: tailMove 1.5s ease-in-out infinite;
+}
+
+@keyframes tailMove {
+    0%,100% {
+        transform: rotate(-50deg);
+    }
+
+    50% {
+        transform: rotate(-35deg);
+    }
+}
+
+/* BLOWING MONKEY */
+
+.monkey.blowing {
+    animation: monkeyBlow 1.4s ease-in-out;
+}
+
+.monkey.blowing .mouth {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    left: 39px;
+    background: #28100f;
+}
+
+.monkey.blowing .cheek {
+    width: 27px;
+    height: 18px;
+    background: rgba(255, 115, 120, .5);
+}
+
+.monkey.blowing .eye {
+    transform: scaleY(.1);
+}
+
+.monkey.blowing .cap {
+    animation: crazyCap .15s linear infinite alternate;
+}
+
+@keyframes crazyCap {
+    from {
+        transform: rotate(2deg);
+    }
+
+    to {
+        transform: rotate(15deg);
+    }
+}
+
+@keyframes monkeyBlow {
+    0% {
+        transform: rotate(0);
+    }
+
+    30% {
+        transform: translateX(18px) rotate(9deg);
+    }
+
+    65% {
+        transform: translateX(25px) rotate(11deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+
+/* MONKEY CELEBRATION */
+
+.monkey.party {
+    animation: monkeyParty .5s ease-in-out infinite alternate;
+}
+
+@keyframes monkeyParty {
+    from {
+        transform: rotate(-8deg) translateY(0);
+    }
+
+    to {
+        transform: rotate(8deg) translateY(-18px);
+    }
+}
+
+/* WIND */
+
+.wind {
+    position: absolute;
+    height: 3px;
+    border-radius: 20px;
+    opacity: 0;
+    left: 245px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.8),
+        transparent
+    );
+}
+
+.wind1 {
+    width: 90px;
+    bottom: 250px;
+}
+
+.wind2 {
+    width: 130px;
+    bottom: 235px;
+}
+
+.wind3 {
+    width: 75px;
+    bottom: 220px;
+}
+
+.wind.active {
+    animation: windMove .8s linear;
+}
+
+@keyframes windMove {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(160px);
+    }
+}
+
+/* TABLE */
+
+.table {
+    position: absolute;
+    right: 20px;
+    bottom: 45px;
+    width: 450px;
+    height: 65px;
+    border-radius: 50%;
+    background:
+        linear-gradient(180deg, #281c20, #100a0d);
+    box-shadow:
+        0 35px 45px rgba(0,0,0,.8);
+}
+
+/* CAKE */
+
+.cake {
+    position: absolute;
+    right: 115px;
+    bottom: 92px;
+    width: 250px;
+    height: 160px;
+    z-index: 5;
+}
+
+.cake-body {
+    position: absolute;
+    bottom: 0;
+    width: 250px;
+    height: 105px;
+    border-radius: 15px 15px 30px 30px;
+    background:
+        linear-gradient(
+            90deg,
+            #381d24,
+            #703649 45%,
+            #351923
+        );
+    box-shadow:
+        0 30px 45px rgba(0,0,0,.7);
+}
+
+.cake-top {
+    position: absolute;
+    width: 250px;
+    height: 55px;
+    top: 25px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            ellipse,
+            #d08b9e,
+            #884a5c 60%,
+            #4f2935
+        );
+}
+
+.cream {
+    position: absolute;
+    top: 62px;
+    width: 250px;
+    height: 28px;
+    background: #e3a8ba;
+    clip-path:
+        polygon(
+            0 0,100% 0,100% 45%,
+            92% 70%,84% 40%,76% 75%,
+            68% 42%,60% 75%,52% 40%,
+            44% 76%,36% 42%,28% 75%,
+            20% 42%,12% 70%,0 45%
+        );
+}
+
+/* CANDLE */
+
+.candle {
+    position: absolute;
+    left: 118px;
+    top: -32px;
+    width: 14px;
+    height: 70px;
+    border-radius: 5px;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #f7e8dc 0,
+            #f7e8dc 8px,
+            #d84c75 8px,
+            #d84c75 15px
+        );
+}
+
+.wick {
+    position: absolute;
+    width: 2px;
+    height: 11px;
+    background: #2b2222;
+    left: 6px;
+    top: -8px;
+}
+
+/* FLAME */
+
+.flame {
+    position: absolute;
+    width: 25px;
+    height: 40px;
+    left: -5px;
+    top: -46px;
+    transform-origin: bottom center;
+    border-radius: 55% 45% 55% 45%;
+    background:
+        radial-gradient(
+            ellipse at bottom,
+            #fff9af 0%,
+            #ffd85c 28%,
+            #ff8a2b 60%,
+            #ff3d11 85%
+        );
+
+    box-shadow:
+        0 0 10px #ffd85c,
+        0 0 25px #ff8a2b,
+        0 0 65px rgba(255,110,40,.65);
+
+    animation: flameDance .15s infinite alternate;
+}
+
+@keyframes flameDance {
+    from {
+        transform: rotate(-4deg) scale(.95,1);
+    }
+
+    to {
+        transform: rotate(5deg) scale(1.08,.95);
+    }
+}
+
+.flame.out {
+    animation: flameOut .9s forwards;
+}
+
+@keyframes flameOut {
+    0% {
+        opacity: 1;
+    }
+
+    30% {
+        transform: rotate(60deg) scale(.8,1.1);
+    }
+
+    60% {
+        transform: rotate(80deg) scale(.4,.8);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.05);
+    }
+}
+
+/* FIRE GLOW */
+
+.fire-glow {
+    position: absolute;
+    right: 80px;
+    bottom: 130px;
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,135,65,.17),
+            transparent 70%
+        );
+    pointer-events: none;
+}
+
+/* SMOKE */
+
+.smoke {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(190,190,190,.35);
+    filter: blur(4px);
+    opacity: 0;
+}
+
+.smoke1 {
+    left: 5px;
+    top: -25px;
+}
+
+.smoke2 {
+    left: 1px;
+    top: -29px;
+}
+
+.smoke3 {
+    left: 7px;
+    top: -32px;
+}
+
+.smoke.active {
+    animation: smokeRise 2.6s ease-out forwards;
+}
+
+@keyframes smokeRise {
+    from {
+        opacity: .5;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: 0;
+        transform:
+            translate(35px,-100px)
+            scale(3);
+    }
+}
+
+/* BUTTON */
+
+#blowBtn {
+    position: absolute;
+    bottom: 4%;
+    padding: 16px 35px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,.16);
+    background:
+        linear-gradient(135deg,#251923,#100b10);
+    color: #f0e5ed;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.6),
+        0 0 20px rgba(190,90,150,.12);
+    transition: .35s;
+    animation: buttonPulse 2s infinite;
+}
+
+#blowBtn:hover {
+    transform: translateY(-4px) scale(1.05);
+}
+
+@keyframes buttonPulse {
+    50% {
+        box-shadow:
+            0 10px 35px rgba(0,0,0,.6),
+            0 0 30px rgba(201,100,166,.3);
+    }
+}
+
+/* FLASH */
+
+.flash {
+    position: fixed;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.flash.active {
+    animation: flashAnim .6s ease;
+}
+
+@keyframes flashAnim {
+    40% {
+        opacity: .15;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* GREETING SCREEN */
+
+.greeting {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at center,#22102d 0%,#0a0711 60%,#020203 100%);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 1s ease;
+}
+
+.greeting.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* PARTY BACKGROUND */
+
+.party-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(255,70,140,.15) 0 3px, transparent 4px),
+        radial-gradient(circle at 80% 30%, rgba(147,96,255,.17) 0 3px, transparent 4px),
+        radial-gradient(circle at 35% 75%, rgba(255,210,90,.16) 0 3px, transparent 4px),
+        radial-gradient(circle at 70% 80%, rgba(90,200,255,.14) 0 3px, transparent 4px);
+
+    background-size:
+        75px 75px,
+        90px 90px,
+        100px 100px,
+        110px 110px;
+
+    animation: bgMove 12s linear infinite;
+}
+
+@keyframes bgMove {
+    to {
+        background-position:
+            80px 100px,
+            -100px 90px,
+            120px -80px,
+            -120px -100px;
+    }
+}
+
+/* BALLOONS */
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    font-size: 75px;
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,.5));
+    animation: balloonFloat 8s linear infinite;
+}
+
+.balloon1 {
+    left: 5%;
+}
+
+.balloon2 {
+    left: 20%;
+    animation-delay: 1s;
+}
+
+.balloon3 {
+    left: 35%;
+    animation-delay: 3s;
+}
+
+.balloon4 {
+    right: 5%;
+    animation-delay: 2s;
+}
+
+.balloon5 {
+    right: 20%;
+    animation-delay: 4s;
+}
+
+.balloon6 {
+    right: 35%;
+    animation-delay: 5s;
+}
+
+@keyframes balloonFloat {
+    from {
+        transform: translateY(0) rotate(-7deg);
+    }
+
+    50% {
+        transform: translateY(-60vh) rotate(7deg);
+    }
+
+    to {
+        transform: translateY(-120vh) rotate(-7deg);
+    }
+}
+
+/* WISH */
+
+.wish-content {
+    width: min(650px,90%);
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 45px 35px;
+
+    border-radius: 35px;
+
+    background: rgba(20,12,30,.68);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.7),
+        inset 0 1px rgba(255,255,255,.08);
+
+    transform: scale(.8);
+    opacity: 0;
+}
+
+.greeting.show .wish-content {
+    animation: wishPop .9s .2s forwards;
+}
+
+@keyframes wishPop {
+    70% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.monkey-emoji {
+    font-size: 72px;
+    animation: emojiDance .55s ease-in-out infinite alternate;
+}
+
+@keyframes emojiDance {
+    from {
+        transform: rotate(-8deg) scale(1);
+    }
+
+    to {
+        transform: rotate(8deg) scale(1.08);
+    }
+}
+
+.wish-content h1 {
+    margin: 16px 0;
+    font-size: clamp(40px,7vw,78px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff9bc8,
+            #ba9aff,
+            #ffd28d,
+            #ff9bc8
+        );
+
+    background-size: 250%;
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: gradientText 5s linear infinite;
+}
+
+@keyframes gradientText {
+    to {
+        background-position: 250%;
+    }
+}
+
+.wish-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #d2c7d5;
+}
+
+.funny-message {
+    margin: 25px auto 0;
+    width: fit-content;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    color: #f1bdd8;
+}
+
+/* CONFETTI */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 9px;
+    height: 15px;
+    z-index: 100;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    from {
+        transform: translateY(-20px) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(110vh) rotate(850deg);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:750px) {
+    .stage {
+        width: 760px;
+        transform: scale(.7);
+    }
+
+    .top-text {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+}
+
+@media(max-width:480px) {
+    .stage {
+        transform: scale(.52);
+    }
+
+    .wish-content p {
+        font-size: 15px;
+    }
+
+    .balloon {
+        font-size: 52px;
+    }
+}
+
+    </style>
 </head>
-
 
 <body>
 
+<div class="ambient-glow"></div>
+<div class="flash" id="flash"></div>
 
-    <!-- =================================
-         BACKGROUND CONFETTI
-    ================================== -->
+<div class="scene">
 
-    <div class="confetti c1"></div>
-    <div class="confetti c2"></div>
-    <div class="confetti c3"></div>
-    <div class="confetti c4"></div>
-    <div class="confetti c5"></div>
-    <div class="confetti c6"></div>
-    <div class="confetti c7"></div>
-    <div class="confetti c8"></div>
-
-
-    <!-- =================================
-         SPARKLES
-    ================================== -->
-
-    <div class="star s1">✦</div>
-
-    <div class="star s2">✧</div>
-
-    <div class="star s3">✦</div>
-
-    <div class="star s4">✧</div>
-
-
-    <!-- =================================
-         FIREWORKS / CRACKERS
-    ================================== -->
-
-    <div class="firework f1">
-
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-
+    <div class="top-text">
+        psst... monkey has one birthday mission 🐵
     </div>
 
+    <div class="stage">
 
-    <div class="firework f2">
+        <div class="monkey" id="monkey">
 
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+            <div class="cap">
+                <div class="cap-ball"></div>
+            </div>
 
-    </div>
+            <div class="ear ear-left"></div>
+            <div class="ear ear-right"></div>
 
+            <div class="monkey-head">
 
-    <div class="firework f3">
+                <div class="hair"></div>
 
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+                <div class="face-area">
 
-    </div>
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
 
+                    <div class="cheek cheek-left"></div>
+                    <div class="cheek cheek-right"></div>
 
-    <div class="firework f4">
+                    <div class="nose"></div>
 
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+                    <div class="mouth"></div>
 
-    </div>
-
-
-    <!-- =================================
-         FLOATING BALLOONS
-    ================================== -->
-
-    <div class="balloon balloon1">
-
-        <div class="string"></div>
-
-    </div>
-
-
-    <div class="balloon balloon2">
-
-        <div class="string"></div>
-
-    </div>
-
-
-    <div class="balloon balloon3">
-
-        <div class="string"></div>
-
-    </div>
-
-
-    <div class="balloon balloon4">
-
-        <div class="string"></div>
-
-    </div>
-
-
-    <!-- =================================
-         FORM SECTION
-    ================================== -->
-
-    <section
-        class="form-container"
-        id="formSection">
-
-
-        <div class="form-card">
-
-
-            <!-- Icon -->
-
-            <div class="form-icon">
-
-                ✨
+                </div>
 
             </div>
 
+            <div class="monkey-body">
 
-            <!-- Heading -->
-
-            <h1>
-
-                Create Your Magic
-
-            </h1>
-
-
-            <p class="subtitle">
-
-                Let's create a beautiful
-                greeting just for you.
-
-            </p>
-
-
-            <!-- =================================
-                 FORM
-            ================================== -->
-
-            <form id="greetingForm">
-
-
-                <!-- NAME -->
-
-                <div class="input-group">
-
-                    <label>
-
-                        👤 What's your name?
-
-                    </label>
-
-
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Enter your name"
-                        required>
-
+                <div class="shirt-text">
+                    PARTY<br>ANIMAL
                 </div>
 
+            </div>
 
-                <!-- AGE -->
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right"></div>
 
-                <div class="input-group">
-
-                    <label>
-
-                        🎂 How old are you?
-
-                    </label>
-
-
-                    <input
-                        type="number"
-                        id="age"
-                        placeholder="Enter your age"
-                        min="1"
-                        max="120"
-                        required>
-
-                </div>
-
-
-                <!-- OCCASION -->
-
-                <div class="input-group">
-
-                    <label>
-
-                        🎉 What are we celebrating?
-
-                    </label>
-
-
-                    <select
-                        id="occasion"
-                        required>
-
-
-                        <option value="">
-
-                            Choose an occasion
-
-                        </option>
-
-
-                        <option value="Birthday">
-
-                            🎂 Birthday
-
-                        </option>
-
-
-                        <option value="Congratulations">
-
-                            🏆 Congratulations
-
-                        </option>
-
-
-                        <option value="Achievement">
-
-                            ⭐ Achievement
-
-                        </option>
-
-
-                        <option value="Graduation">
-
-                            🎓 Graduation
-
-                        </option>
-
-
-                        <option value="Success">
-
-                            🚀 Success
-
-                        </option>
-
-
-                        <option value="Special Day">
-
-                            💖 Special Day
-
-                        </option>
-
-
-                    </select>
-
-                </div>
-
-
-                <!-- SPECIAL MESSAGE -->
-
-                <div class="input-group">
-
-                    <label>
-
-                        💭 Write something special
-
-                    </label>
-
-
-                    <textarea
-                        id="message"
-                        placeholder="Write a short message..."
-                        maxlength="150"></textarea>
-
-                </div>
-
-
-                <!-- =================================
-                     THEME
-                ================================== -->
-
-                <div class="input-group">
-
-                    <label>
-
-                        🎨 Choose your vibe
-
-                    </label>
-
-
-                    <div class="moods">
-
-
-                        <button
-                            type="button"
-                            class="mood active"
-                            data-theme="dream">
-
-                            🌌 Dreamy
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="mood"
-                            data-theme="sunset">
-
-                            🌅 Sunset
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="mood"
-                            data-theme="ocean">
-
-                            🌊 Ocean
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="mood"
-                            data-theme="candy">
-
-                            🍭 Candy
-
-                        </button>
-
-
-                    </div>
-
-                </div>
-
-
-                <!-- CREATE BUTTON -->
-
-                <button
-                    type="submit"
-                    class="create-btn">
-
-                    🎉 Create My Card ✨
-
-                </button>
-
-
-            </form>
-
+            <div class="tail"></div>
 
         </div>
 
+        <div class="wind wind1"></div>
+        <div class="wind wind2"></div>
+        <div class="wind wind3"></div>
 
-    </section>
+        <div class="table"></div>
 
+        <div class="cake">
 
-    <!-- =================================
-         GREETING CARD
-    ================================== -->
+            <div class="cake-body"></div>
+            <div class="cake-top"></div>
+            <div class="cream"></div>
 
-    <section
-        class="card-container"
-        id="cardSection">
+            <div class="candle">
 
+                <div class="wick"></div>
 
-        <!-- Balloons around card -->
+                <div class="flame" id="flame"></div>
 
-        <div class="card-balloon red"></div>
-
-        <div class="card-balloon yellow"></div>
-
-        <div class="card-balloon blue"></div>
-
-        <div class="card-balloon purple"></div>
-
-
-        <!-- Main Card -->
-
-        <div class="card">
-
-
-            <!-- Celebration Icon -->
-
-            <div class="icon">
-
-                🎉
+                <div class="smoke smoke1"></div>
+                <div class="smoke smoke2"></div>
+                <div class="smoke smoke3"></div>
 
             </div>
-
-
-            <!-- Small Heading -->
-
-            <p class="small-title">
-
-                A SPECIAL MESSAGE FOR
-
-            </p>
-
-
-            <!-- User Name -->
-
-            <h1 id="cardName">
-
-                Your Name
-
-            </h1>
-
-
-            <!-- Age -->
-
-            <div class="age">
-
-
-                <span id="cardAge">
-
-                    20
-
-                </span>
-
-
-                <small>
-
-                    YEARS
-
-                </small>
-
-
-            </div>
-
-
-            <!-- Occasion -->
-
-            <h2 id="cardOccasion">
-
-                Congratulations!
-
-            </h2>
-
-
-            <!-- Decorative Line -->
-
-            <div class="line"></div>
-
-
-            <!-- User Message -->
-
-            <p
-                class="message"
-                id="cardMessage">
-
-                May this beautiful moment become
-                the beginning of something extraordinary.
-                Keep believing, keep growing,
-                and keep shining.
-
-            </p>
-
-
-            <!-- Highlight -->
-
-            <p class="highlight">
-
-                ✨ Keep shining. Keep dreaming. ✨
-
-            </p>
-
-
-            <!-- Signature -->
-
-            <p class="signature">
-
-                WITH LOVE • ALWAYS
-
-            </p>
-
-
-            <!-- Back Button -->
-
-            <button
-                class="back-btn"
-                id="backButton">
-
-                ← Create Another Card
-
-            </button>
-
 
         </div>
 
+        <div class="fire-glow" id="fireGlow"></div>
 
-    </section>
+    </div>
+
+    <button id="blowBtn">
+        💨 MAKE MONKEY BLOW
+    </button>
+
+</div>
 
 
-    <!-- =================================
-         JAVASCRIPT
-    ================================== -->
+<div class="greeting" id="greeting">
 
-    <script src="script.js"></script>
+    <div class="party-bg" id="partyBg"></div>
 
+    <div class="balloon balloon1">🎈</div>
+    <div class="balloon balloon2">🎈</div>
+    <div class="balloon balloon3">🎈</div>
+    <div class="balloon balloon4">🎈</div>
+    <div class="balloon balloon5">🎈</div>
+    <div class="balloon balloon6">🎈</div>
+
+    <div class="wish-content">
+
+        <div class="monkey-emoji">🐵🎉</div>
+
+        <h1>HAPPY BIRTHDAYYY!</h1>
+
+        <p>
+            Okayyy... candle successfully defeated. 😂
+            <br><br>
+
+            Hope your day is full of good food, random laughs,
+            zero stress and people actually giving you useful gifts.
+            <br><br>
+
+            May this year bring you more wins, more memories
+            and way fewer Monday mornings. 🎂✨
+        </p>
+
+        <br><br>
+
+        <div class="funny-note">
+            🎈 Now go eat the cake before someone else does.
+        </div>
+
+        <div class="funny-message">
+            ⚠️ WARNING: Monkey is currently approaching the cake... 🐵➡️🎂
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const blowBtn = document.getElementById("blowBtn");
+
+const monkey = document.getElementById("monkey");
+
+const flame = document.getElementById("flame");
+
+const fireGlow = document.getElementById("fireGlow");
+
+const greeting = document.getElementById("greeting");
+
+const flash = document.getElementById("flash");
+
+let blown = false;
+
+
+blowBtn.addEventListener("click", blowCandle);
+
+
+function blowCandle() {
+
+    if (blown) return;
+
+    blown = true;
+
+
+    blowBtn.disabled = true;
+
+    blowBtn.innerHTML = "🐵 MONKEY IS TRYING...";
+
+
+    monkey.classList.add("blowing");
+
+
+    setTimeout(() => {
+
+        document
+            .querySelectorAll(".wind")
+            .forEach((wind, index) => {
+
+                setTimeout(() => {
+
+                    wind.classList.add("active");
+
+                }, index * 120);
+
+            });
+
+    }, 350);
+
+
+    setTimeout(() => {
+
+        flame.classList.add("out");
+
+    }, 750);
+
+
+    setTimeout(() => {
+
+        fireGlow.style.transition =
+            "opacity 1s ease";
+
+        fireGlow.style.opacity = "0";
+
+
+        document
+            .querySelectorAll(".smoke")
+            .forEach((smoke, index) => {
+
+                setTimeout(() => {
+
+                    smoke.classList.add("active");
+
+                }, index * 150);
+
+            });
+
+    }, 1200);
+
+
+    setTimeout(() => {
+
+        blowBtn.innerHTML =
+            "😂 BRO ACTUALLY DID IT";
+
+    }, 1600);
+
+
+    setTimeout(() => {
+
+        monkey.classList.remove("blowing");
+
+        monkey.classList.add("party");
+
+    }, 1800);
+
+
+    setTimeout(() => {
+
+        flash.classList.add("active");
+
+        createConfetti();
+
+    }, 2300);
+
+
+    setTimeout(() => {
+
+        greeting.classList.add("show");
+
+    }, 3000);
+
+}
+
+
+function createConfetti() {
+
+    const colors = [
+        "#ff4f9a",
+        "#aa78ff",
+        "#ffd166",
+        "#5ad7ff",
+        "#ffffff",
+        "#ff8c5a"
+    ];
+
+
+    for (let i = 0; i < 180; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.className =
+            "confetti";
+
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+
+        confetti.style.backgroundColor =
+            colors[
+                Math.floor(
+                    Math.random() * colors.length
+                )
+            ];
+
+
+        confetti.style.width =
+            5 + Math.random() * 7 + "px";
+
+
+        confetti.style.height =
+            8 + Math.random() * 12 + "px";
+
+
+        confetti.style.animationDuration =
+            2.5 + Math.random() * 3 + "s";
+
+
+        confetti.style.animationDelay =
+            Math.random() * 1 + "s";
+
+
+        document.body.appendChild(confetti);
+
+
+        setTimeout(() => {
+
+            confetti.remove();
+
+        }, 6500);
+
+    }
+
+}
+
+</script>
 
 </body>
-
 </html>
