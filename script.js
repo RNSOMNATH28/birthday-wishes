@@ -1,167 +1,81 @@
-const form = document.getElementById("greetingForm");
+.firework {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    z-index: 2;
 
-const formSection =
-    document.getElementById("formSection");
+    animation:
+        burst 2.8s ease-out infinite;
+}
 
-const cardSection =
-    document.getElementById("cardSection");
+.firework span {
+    position: absolute;
 
-const cardName =
-    document.getElementById("cardName");
+    width: 4px;
+    height: 55px;
 
-const cardAge =
-    document.getElementById("cardAge");
+    border-radius: 50%;
 
-const cardOccasion =
-    document.getElementById("cardOccasion");
+    background: linear-gradient(
+        white,
+        #ffd700,
+        #ff4fa3
+    );
 
-const cardMessage =
-    document.getElementById("cardMessage");
+    transform-origin: 50% 100%;
+}
 
-const backButton =
-    document.getElementById("backButton");
+.firework span:nth-child(1) {
+    transform: rotate(0deg);
+}
 
-const moods =
-    document.querySelectorAll(".mood");
+.firework span:nth-child(2) {
+    transform: rotate(45deg);
+}
 
+.firework span:nth-child(3) {
+    transform: rotate(90deg);
+}
 
-/* =========================
-   MOOD SELECTION
-========================= */
+.firework span:nth-child(4) {
+    transform: rotate(135deg);
+}
 
-moods.forEach(function(mood) {
+.firework span:nth-child(5) {
+    transform: rotate(180deg);
+}
 
-    mood.addEventListener("click", function() {
+.firework span:nth-child(6) {
+    transform: rotate(225deg);
+}
 
-        moods.forEach(function(item) {
+.firework span:nth-child(7) {
+    transform: rotate(270deg);
+}
 
-            item.classList.remove("active");
+.firework span:nth-child(8) {
+    transform: rotate(315deg);
+}
 
-        });
+@keyframes burst {
 
-        mood.classList.add("active");
-
-        const theme =
-            mood.getAttribute("data-theme");
-
-        document.body.className = "";
-
-        if (theme !== "dream") {
-
-            document.body.classList.add(theme);
-
-        }
-
-    });
-
-});
-
-
-/* =========================
-   CREATE CARD
-========================= */
-
-form.addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const age =
-        document.getElementById("age").value;
-
-    const occasion =
-        document.getElementById("occasion").value;
-
-    const message =
-        document.getElementById("message").value.trim();
-
-
-    /* Name */
-
-    cardName.textContent =
-        name;
-
-
-    /* Age */
-
-    cardAge.textContent =
-        age;
-
-
-    /* Occasion */
-
-    cardOccasion.textContent =
-        occasion + "!";
-
-
-    /* Message */
-
-    if (message === "") {
-
-        cardMessage.textContent =
-            "May this beautiful moment become the beginning of something extraordinary. Keep believing, keep growing, and keep shining.";
-
-    } else {
-
-        cardMessage.textContent =
-            message;
-
+    0% {
+        transform: scale(.1);
+        opacity: 0;
     }
 
+    20% {
+        transform: scale(.5);
+        opacity: 1;
+    }
 
-    /* Change screen */
+    55% {
+        transform: scale(1);
+        opacity: 1;
+    }
 
-    formSection.style.display =
-        "none";
-
-    cardSection.style.display =
-        "flex";
-
-
-    /* Scroll to top */
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-});
-
-
-/* =========================
-   CREATE ANOTHER CARD
-========================= */
-
-backButton.addEventListener("click", function() {
-
-    cardSection.style.display =
-        "none";
-
-    formSection.style.display =
-        "flex";
-
-    form.reset();
-
-
-    moods.forEach(function(item) {
-
-        item.classList.remove("active");
-
-    });
-
-
-    moods[0].classList.add("active");
-
-
-    document.body.className = "";
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-});
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
