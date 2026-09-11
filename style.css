@@ -1,680 +1,65 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary: #ff66b3;
-    --secondary: #6de8ff;
-}
-
-body {
-
-    min-height: 100vh;
-
-    overflow-x: hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            #ff5ca8,
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            #5964ff,
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            #16002e,
-            #270047,
-            #071b45
-        );
-
-    transition:
-        background 0.8s ease;
-}
-
-
-/* =========================
-   FORM
-========================= */
-
-.form-container {
-
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-
-    padding: 30px;
-}
-
-
-.form-card {
-
-    width: 460px;
-
-    padding: 38px;
-
-    border-radius: 30px;
-
-    background:
-        rgba(255,255,255,.12);
-
-    border:
-        1px solid rgba(255,255,255,.25);
-
-    backdrop-filter: blur(14px);
-
-    -webkit-backdrop-filter: blur(14px);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.45);
-
-    color: white;
-
-    animation:
-        appear .7s ease;
-}
-
-
-@keyframes appear {
-
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-}
-
-
-.form-icon {
-
-    text-align: center;
-
-    font-size: 45px;
-
-    margin-bottom: 10px;
-
-    animation:
-        pulse 2s infinite;
-}
-
-
-.form-card h1 {
-
-    text-align: center;
-
-    font-size: 34px;
-
-    margin-bottom: 8px;
-
-    background:
-        linear-gradient(
-            90deg,
-            white,
-            #ffd6f6,
-            #a8efff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-    color: transparent;
-}
-
-
-.subtitle {
-
-    text-align: center;
-
-    color:
-        rgba(255,255,255,.7);
-
-    margin-bottom: 28px;
-}
-
-
-/* =========================
-   INPUTS
-========================= */
-
-.input-group {
-
-    margin-bottom: 18px;
-}
-
-
-.input-group label {
-
-    display: block;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    margin-bottom: 8px;
-
-    color:
-        rgba(255,255,255,.9);
-}
-
-
-input,
-select,
-textarea {
-
-    width: 100%;
-
-    padding: 13px 15px;
-
-    border: 1px solid
-        rgba(255,255,255,.2);
-
-    border-radius: 12px;
-
-    outline: none;
-
-    color: white;
-
-    background:
-        rgba(0,0,0,.18);
-
-    font-family: inherit;
-
-    transition:
-        .3s;
-}
-
-
-input::placeholder,
-textarea::placeholder {
-
-    color:
-        rgba(255,255,255,.45);
-}
-
-
-select option {
-
-    color: black;
-}
-
-
-input:focus,
-select:focus,
-textarea:focus {
-
-    border-color:
-        var(--secondary);
-
-    box-shadow:
-        0 0 15px
-        rgba(109,232,255,.2);
-}
-
-
-textarea {
-
-    height: 75px;
-
-    resize: none;
-}
-
-
-/* =========================
-   MOODS
-========================= */
-
-.moods {
-
-    display: flex;
-
-    gap: 7px;
-
-    flex-wrap: wrap;
-}
-
-
-.mood {
-
-    padding: 9px 12px;
-
-    border: 1px solid
-        rgba(255,255,255,.2);
-
-    border-radius: 20px;
-
-    color: white;
-
-    background:
-        rgba(255,255,255,.08);
-
-    cursor: pointer;
-
-    transition:
-        .3s;
-}
-
-
-.mood:hover {
-
-    transform:
-        translateY(-2px);
-
-    background:
-        rgba(255,255,255,.18);
-}
-
-
-.mood.active {
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4fa3,
-            #7067ff
-        );
-
-    border-color:
-        transparent;
-
-    box-shadow:
-        0 5px 18px
-        rgba(255,79,163,.3);
-}
-
-
-/* =========================
-   CREATE BUTTON
-========================= */
-
-.create-btn {
-
-    width: 100%;
-
-    padding: 15px;
-
-    margin-top: 8px;
-
-    border: none;
-
-    border-radius: 14px;
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4fa3,
-            #7067ff
-        );
-
-    box-shadow:
-        0 10px 25px
-        rgba(255,79,163,.25);
-
-    transition:
-        .3s;
-}
-
-
-.create-btn:hover {
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 15px 30px
-        rgba(255,79,163,.35);
-}
-
-
-/* =========================
-   GREETING CARD
-========================= */
-
-.card-container {
-
-    display: none;
-
-    position: relative;
-
-    width: 100%;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 30px;
-}
-
-
-.card {
-
-    position: relative;
-
-    width: 430px;
-
-    padding: 42px 38px;
-
-    text-align: center;
-
-    color: white;
-
-    border-radius: 30px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.25);
-
-    background:
-        rgba(255,255,255,.12);
-
-    backdrop-filter:
-        blur(14px);
-
-    -webkit-backdrop-filter:
-        blur(14px);
-
-    box-shadow:
-        0 30px 70px
-        rgba(0,0,0,.45);
-
-    z-index: 5;
-
-    animation:
-        appear .7s ease;
-}
-
-
-.icon {
-
-    font-size: 50px;
-
-    margin-bottom: 8px;
-
-    animation:
-        pulse 2s infinite;
-}
-
-
-.small-title {
-
-    font-size: 11px;
-
-    letter-spacing: 3px;
-
-    color:
-        rgba(255,255,255,.6);
-
-    margin-bottom: 8px;
-}
-
-
-.card h1 {
-
-    font-size: 40px;
-
-    background:
-        linear-gradient(
-            90deg,
-            white,
-            #ffd6f6,
-            #a8efff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-    color: transparent;
-}
-
-
-/* =========================
-   AGE
-========================= */
-
-.age {
-
-    margin: 12px auto;
-
-    width: 75px;
-    height: 75px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff66b3,
-            #6a6cff
-        );
-
-    box-shadow:
-        0 8px 25px
-        rgba(255,80,170,.3);
-}
-
-
-.age span {
-
-    font-size: 25px;
-
-    font-weight: 800;
-}
-
-
-.age small {
-
-    font-size: 8px;
-
-    letter-spacing: 1px;
-}
-
-
-.card h2 {
-
-    font-size: 24px;
-
-    margin-top: 10px;
-}
-
-
-.line {
-
-    width: 80px;
-
-    height: 3px;
-
-    margin:
-        18px auto;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff66b3,
-            #6de8ff
-        );
-}
-
-
-.message {
-
-    font-size: 16px;
-
-    line-height: 1.8;
-
-    color:
-        rgba(255,255,255,.88);
-}
-
-
-.highlight {
-
-    margin-top: 22px;
-
-    font-size: 17px;
-
-    font-weight: 600;
-}
-
-
-.signature {
-
-    margin-top: 25px;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    color:
-        rgba(255,255,255,.55);
-}
-
-
-/* =========================
-   BACK BUTTON
-========================= */
-
-.back-btn {
-
-    margin-top: 25px;
-
-    padding: 9px 17px;
-
-    border: 1px solid
-        rgba(255,255,255,.2);
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    color: white;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-
-.back-btn:hover {
-
-    background:
-        rgba(255,255,255,.18);
-
-    transform:
-        translateY(-2px);
-}
-
-
-/* =========================
-   BALLOONS
-========================= */
+/* =================================
+   FLOATING BALLOONS
+================================= */
 
 .balloon {
+    position: fixed;
 
-    position: absolute;
-
-    width: 62px;
-    height: 76px;
+    width: 60px;
+    height: 75px;
 
     border-radius:
         50% 50% 45% 45%;
 
-    box-shadow:
-        inset -8px -10px 12px
-        rgba(0,0,0,.15),
+    z-index: 1;
 
-        inset 8px 8px 12px
-        rgba(255,255,255,.25);
+    box-shadow:
+        inset -10px -12px 15px rgba(0,0,0,.18),
+        inset 8px 8px 12px rgba(255,255,255,.35);
 
     animation:
-        float 4s ease-in-out infinite;
+        balloonFloat 5s ease-in-out infinite;
 }
 
 
-.balloon::before {
+/* Balloon knot */
 
+.balloon::after {
     content: "";
 
     position: absolute;
 
     bottom: -7px;
+    left: 25px;
 
-    left: 26px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
 
-    border-left:
-        5px solid transparent;
-
-    border-right:
-        5px solid transparent;
-
-    border-top:
-        9px solid currentColor;
+    border-top: 9px solid currentColor;
 }
 
 
-.balloon::after {
+/* Balloon string */
 
-    content: "";
-
+.string {
     position: absolute;
 
     width: 1px;
-
-    height: 100px;
+    height: 130px;
 
     background:
-        rgba(255,255,255,.6);
+        rgba(255,255,255,.55);
 
-    top: 74px;
-
-    left: 31px;
+    left: 30px;
+    top: 73px;
 }
 
 
-.red {
+/* Balloon 1 */
 
-    left: 7%;
-    top: 15%;
+.balloon1 {
+    left: 5%;
+    bottom: -100px;
 
     background:
         linear-gradient(
@@ -684,31 +69,17 @@ textarea {
         );
 
     color: #ff416c;
+
+    animation:
+        rise 12s linear infinite;
 }
 
 
-.yellow {
+/* Balloon 2 */
 
-    right: 7%;
-    top: 20%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffe259,
-            #ffa751
-        );
-
-    color: #ffa751;
-
-    animation-delay: 1s;
-}
-
-
-.blue {
-
-    left: 8%;
-    bottom: 12%;
+.balloon2 {
+    left: 25%;
+    bottom: -100px;
 
     background:
         linear-gradient(
@@ -719,14 +90,18 @@ textarea {
 
     color: #4facfe;
 
-    animation-delay: .5s;
+    animation:
+        rise 15s linear infinite;
+
+    animation-delay: 3s;
 }
 
 
-.purple {
+/* Balloon 3 */
 
-    right: 8%;
-    bottom: 14%;
+.balloon3 {
+    right: 25%;
+    bottom: -100px;
 
     background:
         linear-gradient(
@@ -737,306 +112,135 @@ textarea {
 
     color: #c471f5;
 
-    animation-delay: 1.5s;
+    animation:
+        rise 13s linear infinite;
+
+    animation-delay: 5s;
 }
 
 
-@keyframes float {
+/* Balloon 4 */
 
-    0%,100% {
+.balloon4 {
+    right: 5%;
+    bottom: -100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe259,
+            #ffa751
+        );
+
+    color: #ffa751;
+
+    animation:
+        rise 16s linear infinite;
+
+    animation-delay: 1s;
+}
+
+
+/* Balloon floating upward */
+
+@keyframes rise {
+
+    0% {
         transform:
             translateY(0)
-            rotate(-3deg);
+            translateX(0)
+            rotate(-5deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
     }
 
     50% {
         transform:
-            translateY(-15px)
-            rotate(3deg);
+            translateY(-55vh)
+            translateX(35px)
+            rotate(7deg);
     }
 
-}
-
-
-@keyframes pulse {
-
-    50% {
+    100% {
         transform:
-            scale(1.1);
-    }
+            translateY(-125vh)
+            translateX(-30px)
+            rotate(-5deg);
 
+        opacity: 0;
+    }
 }
 
 
-/* =========================
-   CONFETTI
-========================= */
+/* =================================
+   FIREWORKS
+================================= */
 
-.confetti {
+.firework {
 
-    position: absolute;
+    position: fixed;
 
     width: 8px;
-    height: 16px;
-
-    border-radius: 3px;
-
-    animation:
-        fall 7s linear infinite;
-}
-
-
-.c1 {
-    left: 8%;
-    background: #ffcf33;
-}
-
-.c2 {
-    left: 20%;
-    background: #ff5c8a;
-    animation-delay: 1s;
-}
-
-.c3 {
-    left: 32%;
-    background: #48e0ff;
-    animation-delay: 2s;
-}
-
-.c4 {
-    left: 45%;
-    background: #b36cff;
-    animation-delay: .5s;
-}
-
-.c5 {
-    left: 60%;
-    background: #ffcf33;
-    animation-delay: 1.5s;
-}
-
-.c6 {
-    left: 72%;
-    background: #ff5c8a;
-    animation-delay: 3s;
-}
-
-.c7 {
-    left: 84%;
-    background: #48e0ff;
-    animation-delay: 2.5s;
-}
-
-.c8 {
-    left: 94%;
-    background: #b36cff;
-    animation-delay: 4s;
-}
-
-
-@keyframes fall {
-
-    from {
-        top: -30px;
-        transform: rotate(0);
-    }
-
-    to {
-        top: 110vh;
-        transform: rotate(360deg);
-    }
-
-}
-
-
-/* =========================
-   SPARKLES
-========================= */
-
-.star {
-
-    position: absolute;
-
-    color: white;
-
-    font-size: 22px;
-
-    animation:
-        sparkle 2.5s infinite;
-}
-
-
-.s1 {
-    top: 15%;
-    left: 15%;
-}
-
-.s2 {
-    top: 20%;
-    right: 15%;
-    animation-delay: .5s;
-}
-
-.s3 {
-    bottom: 18%;
-    left: 15%;
-    animation-delay: 1s;
-}
-
-.s4 {
-    bottom: 12%;
-    right: 15%;
-    animation-delay: 1.5s;
-}
-
-
-@keyframes sparkle {
-
-    0%,100% {
-        opacity: .2;
-        transform: scale(.7);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-
-}
-
-
-/* =========================
-   THEMES
-========================= */
-
-body.sunset {
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            #ff9a44,
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            #ff3d81,
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            #321000,
-            #6b1745,
-            #220035
-        );
-}
-
-
-body.ocean {
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            #00e5ff,
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            #4169ff,
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            #001c35,
-            #003d68,
-            #07134d
-        );
-}
-
-
-body.candy {
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            #ff8bd1,
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            #b48cff,
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            #43002d,
-            #6b155c,
-            #241044
-        );
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
-
-    .form-card,
-    .card {
-
-        width: 100%;
-
-        padding: 30px 22px;
-    }
-
-    .form-container,
-    .card-container {
-
-        padding: 15px;
-    }
-
-    .form-card h1 {
-
-        font-size: 29px;
-    }
-
-    .card h1 {
-
-        font-size: 32px;
-    }
-
-    .balloon {
-
-        transform: scale(.65);
-    }
-
-}
-.firework {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    z-index: 2;
-
-    animation:
-        burst 2.8s ease-out infinite;
-}
-
-.firework span {
-    position: absolute;
-
-    width: 4px;
-    height: 55px;
+    height: 8px;
 
     border-radius: 50%;
 
-    background: linear-gradient(
-        white,
-        #ffd700,
-        #ff4fa3
-    );
+    z-index: 2;
 
-    transform-origin: 50% 100%;
+    animation:
+        fireworkBurst 3s ease-out infinite;
 }
+
+
+/* Firework positions */
+
+.f1 {
+    top: 22%;
+    left: 15%;
+}
+
+.f2 {
+    top: 18%;
+    right: 17%;
+
+    animation-delay: 1s;
+}
+
+.f3 {
+    top: 42%;
+    right: 8%;
+
+    animation-delay: 2s;
+}
+
+
+/* Firework particles */
+
+.firework span {
+
+    position: absolute;
+
+    width: 5px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            white,
+            #ff66b3
+        );
+
+    transform-origin:
+        50% 100%;
+}
+
+
+/* Eight directions */
 
 .firework span:nth-child(1) {
     transform: rotate(0deg);
@@ -1070,25 +274,38 @@ body.candy {
     transform: rotate(315deg);
 }
 
-@keyframes burst {
+
+/* Burst animation */
+
+@keyframes fireworkBurst {
 
     0% {
-        transform: scale(.1);
+        transform: scale(0);
+
         opacity: 0;
     }
 
-    20% {
-        transform: scale(.5);
+    15% {
+        transform: scale(.3);
+
         opacity: 1;
     }
 
-    55% {
+    50% {
         transform: scale(1);
+
         opacity: 1;
+    }
+
+    80% {
+        transform: scale(1.5);
+
+        opacity: .7;
     }
 
     100% {
-        transform: scale(2.2);
+        transform: scale(2);
+
         opacity: 0;
     }
 }
